@@ -1,0 +1,41 @@
+%%writefile pi_openmp.c
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <omp.h>
+
+int main() {
+    int num, i;
+    printf("Enter the number of steps: ");
+    scanf("%d", &num);
+
+    double step = 1.0 / (double)num, pi = 0.0;
+
+    // Use OpenMP timing for accurate measurement
+    double start_time = omp_get_wtime();
+
+    // Set a reasonable number of threads (e.g., based on CPU cores)
+    int num_threads = 4;  // Change as needed
+    omp_set_num_threads(num_threads);
+
+    // Parallelize the calculation
+    #pragma omp parallel for reduction(+:pi)
+    for (i = 0; i < num; i++) {
+        double x = (i + 0.5) * step;
+        pi += (4.0 * step) / (1.0 + x * x);
+    }
+
+    double end_time = omp_get_wtime();
+
+    printf("Time Taken: %lf seconds\n", end_time - start_time);
+    printf("Value of Pi = %.16lf\n", pi);
+
+    return 0;
+}
+
+
+gcc -fopenmp pi_openmp.c -o pi_openmp
+./pi_openmp
+
+
