@@ -38,3 +38,6 @@ printf("Total Amount : %d",ans);
 et=clock(); 
 printf("\nTime Taken:%lf",(double)(et-st)/CLOCKS_PER_SEC); 
 }
+
+gcc -fopenmp pi_openmp.c -o pi_openmp
+./pi_openmp
