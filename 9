@@ -45,3 +45,6 @@ if (rank == 0) printf("Time taken by NonBlocking send/receive : %lf\n", (double)
 CLOCKS_PER_SEC); 
 MPI_Finalize(); 
 }
+
+mpicc -o test65 test65.c
+mpirun -np 4 ./test65
