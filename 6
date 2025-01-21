@@ -23,3 +23,6 @@ printf("Time taken for the computation: %f seconds\n", end_time - start_time);
 MPI_Finalize(); 
 return 0; 
 } 
+
+mpicc -o test65 test65.c
+mpirun -np 4 ./test65
