@@ -53,3 +53,6 @@ void main() {
  printf("Time Taken:%lf\n",(double)(et-st)/CLOCKS_PER_SEC); 
   
 } 
+
+gcc -fopenmp pi_openmp.c -o pi_openmp
+./pi_openmp
