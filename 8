@@ -51,3 +51,6 @@ printf("Must specify %d tasks. Terminating.\n", SIZE);
 } 
 MPI_Finalize(); 
 } 
+
+mpicc -o test65 test65.c
+mpirun -np 4 ./test65
