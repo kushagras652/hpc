@@ -35,3 +35,6 @@ printf("Time taken for MPI_Scatter: %.6f seconds\n", time_taken);
 } 
 MPI_Finalize(); 
 } 
+
+mpicc -o test65 test65.c
+mpirun -np 4 ./test65
